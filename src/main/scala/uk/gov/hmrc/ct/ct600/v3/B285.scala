@@ -17,12 +17,12 @@
 package uk.gov.hmrc.ct.ct600.v3
 
 import uk.gov.hmrc.ct.box.{Calculated, CtBoxIdentifier, CtInteger, CtTypeConverters}
-import uk.gov.hmrc.ct.ct600.v3.retriever.CT600BoxRetriever
+import uk.gov.hmrc.ct.computations.retriever.ComputationsBoxRetriever
 
-case class B295(value: Int) extends CtBoxIdentifier(name = "Total of deductions and reliefs") with CtInteger
+case class B285(value: Int) extends CtBoxIdentifier(name = "Trading losses carried forward and claimed against total profits") with CtInteger
 
-object B295 extends Calculated[B295, CT600BoxRetriever] with CtTypeConverters {
-  override def calculate(boxRetriever: CT600BoxRetriever): B295 = {
-    B295(boxRetriever.b275() + boxRetriever.b285())
+object B285 extends Calculated[B285, ComputationsBoxRetriever] with CtTypeConverters {
+  override def calculate(boxRetriever: ComputationsBoxRetriever): B285 = {
+    B285(boxRetriever.cp283() + boxRetriever.cp997())
   }
 }
